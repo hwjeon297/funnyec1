@@ -1,5 +1,4 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-
 class OrderModel extends CI_model {
 
 	// 주문하기
@@ -7,7 +6,6 @@ class OrderModel extends CI_model {
     {
         // if($member == 'non-member') $email = "sadasd";
 
-        
         $date = date('Y-m-d H:i:s');
         try {
             $sql = "

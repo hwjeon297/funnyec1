@@ -74,6 +74,7 @@ class OrderController extends CI_Controller {
     public function order()
     {
 
+
         $this->load->model('OrderModel');
 
         $member      = $_POST['member'];        // 회원 유무 확인 -> 회원 아이디 / 비회원 1
@@ -87,6 +88,7 @@ class OrderController extends CI_Controller {
         $money       = $_POST['money'];         // 전체 지불 돈
         $key         = $this->generateRandomString(); // \random
 
+
         // 주문 상품 정보 
         $code        = $_POST['code'];          // 코드
         $size        = $_POST['size'];          // 사이즈
@@ -94,7 +96,6 @@ class OrderController extends CI_Controller {
 
         $orderId = $this->OrderModel->orderStart($key, $member, $email, $phone, $reName, $rePhone, $destination, $memo, $payment, $money, $code, $size, $qty);
         $this->OrderModel->orderDelail($orderId, $code, $size, $qty);
-       
     
         // cart delete
         $this->cart->destroy();

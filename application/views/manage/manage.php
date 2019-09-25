@@ -8,55 +8,14 @@
 	<link rel="stylesheet" type="text/css" href="../funnyec/public/css/productinfo.css">
     <link rel="stylesheet" href="../funnyec/public/css/insertproduct.css">
     <title>Mangement</title>
-    <script>
-        function selectFirstCategory(val){
-			if(val == "2"){
-			    var content = "";
-			    content += "<select name='secondCategory1' id='selectCategory1' class='selectCategory'>";
-			    content += "<option value='3'>ランニング</option>";
-			    content += "<option value='4'>サッカー</option>"
-				content += "</select>";
-			    $('#secondCategory').html(content);
-			}else if(val == "3"){
-			    var content = "";
-                content += "<select name='secondCategory1' id='selectCategory1' class='selectCategory'>";
-                content += "<option value='5'>キッズスニーカー</option>";
-                content += "<option value='6'>ベビーシューズ</option>"
-                content += "</select>";
-                $('#secondCategory').html(content);
-			}else if(val == "4"){
-                var content = "";
-                content += "<select name='secondCategory1' id='selectCategory1' class='selectCategory'>";
-                content += "<option value='7'>スウール</option>";
-                content += "<option value='8'>モンクストラップ</option>"
-                content += "</select>";
-                $('#secondCategory').html(content);
-			}else if(val == "1"){
-                var content = "";
-                content += "<select name='secondCategory1' id='selectCategory1' class='selectCategory'>";
-                content += "<option value='1'>スニーカー</option>";
-                content += "<option value='2'>サンダル</option>"
-                content += "</select>";
-                $('#secondCategory').html(content);
-			}
-		}
-		function checkForm(){
-            var sizeArr = new Array();
-            var i = 200;
-            for(i = 200; i<= 295; i+=5){
-				var backgroundColor = $("#size"+i).css("backgroundColor");
-                if(backgroundColor == "rgb(0, 0, 0)"){
-                    var size = $("#size"+i).text();
-                    sizeArr.push(size);
-                }
-            }
-            $('#size').val(sizeArr);
-		}
-    </script>
 </head>
+<script>
+
+</script>
 <body>
 
-<script type="text/javascript" src="../funnyec/public/script/productinfo.js"></script>
+	<script type="text/javascript" src="../funnyec/public/script/insertProduct.js"></script>
+	<script type="text/javascript" src="../funnyec/public/script/productinfo.js"></script>
     <!-- header -->
     <?php include_once  APPPATH ."views/public/header.php"; ?>
 
@@ -82,13 +41,13 @@
                     <tr>
                         <th>商品名</th>
                         <td>
-                            <input type="text" name="productName">
+                            <input type="text" name="productName" id="productName">
                         </td>
                     </tr>
                     <tr>
                         <th>販売価格</th>
                         <td>
-                            <input type="text" style="width:100px" name="productPrice">　円
+                            <input type="text" style="width:100px" name="productPrice" id="productPrice">　円
                         </td>
                     </tr>
                     <tr>
@@ -123,7 +82,7 @@
                         <th>商品画像</th>
                         <td>
                             <div class="pictureButton">
-                             <input type="file" name="insertPicture"/>
+                             <input type="file" name="insertPicture" id="insertPicture"/>
                             </div>
                         </td>
                     </tr>

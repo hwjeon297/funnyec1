@@ -33,7 +33,7 @@ class ManageController extends CI_Controller{
 		$res = $this->ProductModel->insertSize($code, $sizeArr);
 
 		//fileupload
-		$uploadDir = 'C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\funnyec\public\picture';
+		$uploadDir = '/var/www/html/funnyec/public/picture';
 
 		$error = $_FILES['insertPicture']['error'];
 
@@ -55,10 +55,8 @@ class ManageController extends CI_Controller{
 
 		move_uploaded_file($_FILES['insertPicture']['tmp_name'], "$uploadDir/$name");
 
+		echo "<script>alert('商品を登録しました。');</script>";
 		$this->load->view('product/product_main');
 	}
 
-	public function insertPicture(){
-
-	}
 }

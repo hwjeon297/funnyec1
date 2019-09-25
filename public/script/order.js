@@ -1,3 +1,4 @@
+
 var check1 = false;
 var check2 = false;
 var check3 = false;
@@ -279,8 +280,8 @@ function stepThree() {
     var destination = $('#destinationValue').text();
     var memo        = $('#memoValue').text();
     var payment     = $('.select-payment button').text();
-    var money       = $('#checkThreeButtonId').attr("name");
-    
+	var money       = $('.totalPrice').text();
+
     var code = $('.order-code-hidden').text();
     var size = $('.order-size-hidden').text();
     var qty = $('.order-qty-hidden').text();
@@ -320,8 +321,8 @@ function stepThree() {
             location.href= "/funnyec/orderDone?orderId="+ res;
             console.log(res)
         }   
-        , error : function(){
-            alert('Error');
+        , error : function(request, status, error){
+			alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
         }
     });    
     

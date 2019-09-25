@@ -247,17 +247,21 @@
                     <span class="price">
                         <?php 
                             if($price2 >= 1000000){
-                                echo '<span class="price">' . number_format($price2) . "円" .  '</span>';    
+                            	$totalPrice = $price2;
+                                echo '<span class="totalPrice">' . $totalPrice. '</span> <span>円</span>';
                             }else{
-                                echo '<span class="price">' . number_format($price2+500) . "円" .  '</span>';
+                            	$totalPrice =$price2+500;
+                                echo '<span class="totalPrice">' . $totalPrice. '</span> <span>円</span>';
                             }
                         ?>
                     </span>
-                    <span class="total-price-bottom"></span>
+                    <span class="total-price-bottom">
+					</span>
                 </div>
                 <!-- <div class="order-form">
                     <button class="order-botton">注文する</button>
                 </div> -->
+
             </div>
         </div>
     </div>

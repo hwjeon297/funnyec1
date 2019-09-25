@@ -2,13 +2,13 @@
 
 class ProductModel extends CI_model {
 
-	
+
 
     /**
     * login function
-    * @param  string  $id 
-    * @param  string  $pw 
-    * @return integer 1, 0 
+    * @param  string  $id
+    * @param  string  $pw
+    * @return integer 1, 0
     */
     public function productMainCate($productMaincate)
     {
@@ -31,15 +31,15 @@ class ProductModel extends CI_model {
 
     public function productView($productType) {
         try {
-            
+
             $sql = "SELECT num FROM main_category WHERE name = '$productType'";
 
             $categoryNum = $this->db->query($sql)->result();
-            // id, pw select query 
+            // id, pw select query
             $sql = "SELECT * FROM product WHERE main_category = " . $categoryNum[0]->num . " ORDER BY code DESC";
-            // query result 
+            // query result
             $result = $this->db->query($sql)->result();
-            
+
 
             if(!$result) return 0;
 
@@ -68,7 +68,7 @@ class ProductModel extends CI_model {
                     }
                     $result = $this->db->query($sql)->result();
                 break;
-                
+
                 default:
                     switch ($orderby) {
                         case 'new':
@@ -84,16 +84,16 @@ class ProductModel extends CI_model {
                     $result = $this->db->query($sql)->result();
                 break;
             }
-            
-            
+
+
         } catch (\Throwable $th) {
-            
+
         }
 
         return $result;
     }
 
-    
+
 
     public function productMenu($productType) {
 
@@ -105,7 +105,7 @@ class ProductModel extends CI_model {
             $categoryNum = $this->db->query($sql)->result();
 
             $sql = "SELECT name FROM sub_category WHERE main_num = " . $categoryNum[0]->num;
-                // query result 
+                // query result
             $result = $this->db->query($sql)->result();
 
             if(!$result) return 0;
@@ -113,11 +113,11 @@ class ProductModel extends CI_model {
         } catch (\Throwable $th) {
             //throw $th;
         }
-        
+
         return $result;
     }
 
-    public function productCategoryView($categoryType) 
+    public function productCategoryView($categoryType)
     {
 
         try {
@@ -143,11 +143,11 @@ class ProductModel extends CI_model {
     # info, size, category
     public function productInfoView($productCode)
     {
-        
+
         try {
             $sql  = "SELECT p.*, mc.name AS mname, sc.name AS sname ";
             $sql .= "FROM ec.product AS p ";
-            $sql .= "JOIN ec.main_category AS mc "; 
+            $sql .= "JOIN ec.main_category AS mc ";
             $sql .= "ON p.main_category = mc.num ";
             $sql .= "JOIN ec.sub_category AS sc ";
             $sql .= "ON p.sub_category = sc.num ";
@@ -177,12 +177,12 @@ class ProductModel extends CI_model {
 
            $result = $this->db->query($sql)->result();
 
-           if(!$result) return 0; 
+           if(!$result) return 0;
 
         } catch (\Throwable $th) {
             //throw $th;
         }
-        
+
         return $result;
 
     }
@@ -191,15 +191,15 @@ class ProductModel extends CI_model {
     {
 
         try {
-            
+
             $sql = "SELECT code, src, name, price FROM product WHERE name like '%$product%'";
 
             $result = $this->db->query($sql)->result();
 
             if(!$result) return 0;
-            
+
         } catch (\Throwable $th) {
-            
+
         }
 
         return $result;
@@ -207,7 +207,7 @@ class ProductModel extends CI_model {
     }
 
 	public function insertProduct($productName, $name, $productPrice, $firstCategory, $secondCategory){
-    	$name = "../funnyec/public/picture/$name";
+    $name = "../funnyec/public/picture/$name";
 
 		$sql = "insert into product (name, src, price, main_category, sub_category) values ('$productName', '$name', '$productPrice', '$firstCategory', '$secondCategory')";
 
